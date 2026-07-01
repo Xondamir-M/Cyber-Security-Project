@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Password Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
+        .nav { margin-bottom: 20px; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; }
+        .flash { color: green; background: #dff0d8; padding: 10px; }
+        table { border-collapse: collapse; width: 100%; background: white; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #f8f8f8; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0; }
+        .btn { padding: 10px 15px; background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="{{ url_for('index') }}">Home</a> |
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('dashboard') }}">Dashboard</a> |
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a> |
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+</html>

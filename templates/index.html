@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Welcome to Secure Password Manager</h1>
+<p>Store your passwords safely with encryption.</p>
+<p><a href="{{ url_for('register') }}">Register Now</a> | <a href="{{ url_for('login') }}">Login</a></p>
+{% endblock %}

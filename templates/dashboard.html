@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Your Passwords</h1>
+<a href="{{ url_for('add_password') }}" class="btn">Add New Password</a> |
+<a href="{{ url_for('generate') }}" class="btn">Generate Password</a>
+
+<table>
+    <tr>
+        <th>Site/App</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Notes</th>
+        <th>Actions</th>
+    </tr>
+    {% for entry in entries %}
+    <tr>
+        <td>{{ entry[1] }}</td>
+        <td>{{ entry[2] }}</td>
+        <td><code>{{ entry[3] }}</code></td>
+        <td>{{ entry[4] }}</td>
+        <td><a href="{{ url_for('delete_password', id=entry[0]) }}" onclick="return confirm('Delete?')">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

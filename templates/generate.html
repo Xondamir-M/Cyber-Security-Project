@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Generated Strong Password</h1>
+<p style="font-size: 1.3em; background: #fff; padding: 15px; border: 1px solid #ddd;">
+    <strong>{{ password }}</strong>
+</p>
+<p>Copy this and use it when adding a new password entry.</p>
+<a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
+{% endblock %}
